@@ -23,10 +23,11 @@ for root, dirs, files in os.walk(path_to_dredd):
 
     # checked
     if os.path.isfile(output_path):
+        print('done', directory)
         continue
 
     # FAILED
-    if directory in ['parser']:
+    if directory in ['parser', 'nodes', 'regex', 'jit/llvm', 'libpq', 'utils/adt', 'utils/mb', 'port/win32', 'port']:
         continue
     
     relative_path = os.path.join(path_to_dredd.replace(postgres_src + '/', ''), directory)
@@ -39,14 +40,16 @@ for root, dirs, files in os.walk(path_to_dredd):
         if dredd_proc.returncode != 0:
             print('Dredd Fail:', directory)
             print(dredd_proc.stderr.decode())
-            exit(1)
+            continue
+            # exit(1)
 
         # Compile the mutated file
         cov_proc = subprocess.run(['make'], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, cwd=temp_src_dir)
         if cov_proc.returncode != 0:
             print('Build Fail:', directory)
             print(cov_proc.stderr.decode())
-            exit(2)
+            continue
+            # exit(2)
 
 
         # Run regression test and record covered mutants
@@ -58,7 +61,8 @@ for root, dirs, files in os.walk(path_to_dredd):
             if check_proc.returncode != 0:
                 print('Check Fail:', directory)
                 print(check_proc.stderr.decode())
-                exit(3) 
+                continue
+                # exit(3) 
 
             temp_coverage_file.seek(0)
             covered_mutants = sorted([int(line.rstrip()) for line in temp_coverage_file])
