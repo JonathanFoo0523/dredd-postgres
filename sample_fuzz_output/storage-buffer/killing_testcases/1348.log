@@ -1,0 +1,32 @@
+-- Time: 2024/06/09 09:54:25
+-- Database: database0
+-- Database version: 16.3
+-- seed value: 812358000
+\c test;
+DROP DATABASE IF EXISTS database0;
+CREATE DATABASE database0 ;
+\c database0;
+CREATE TEMP TABLE t0(c0 serial ) ON COMMIT DROP ; -- 11ms;
+CREATE TABLE t0(c0 TEXT COLLATE "en_US.utf8"  PRIMARY KEY UNIQUE DEFAULT (substr('A4킧gZ#Aj', ((CAST('(-1743261992,-1743261992)'::int4range AS INT))/(((-1743261992)/(1103286439)))), num_nonnulls(TRUE))) NOT NULL, UNIQUE(c0), EXCLUDE ((CAST(((t0.c0)LIKE(chr(+ (1008054643)))) AS INT)) tid_bloom_ops NULLS FIRST WITH +, c0 DESC WITH |>>, ((upper(lower(t0.c0)))::VARCHAR) timestamptz_ops WITH +) WHERE ((((((((('[745105225,1145347145]'::int4range)+('(-500960754,-500960754]'::int4range)))+((('[-367151075,1103286439]'::int4range)-('[-1499248875,1145347145]'::int4range)))))-((('(-367151075,1727037350)'::int4range)-((('[-500960754,723634012)'::int4range)*('[1145347145,1145347145]'::int4range)))))))@>((((((('(613867525,862999355)'::int4range)-('[1030377558,1980355690]'::int4range)))+((('(-1617231837,-1164569639)'::int4range)+('(-1826360059,1980355690]'::int4range)))))+((((('(-1281235732,-578223246)'::int4range)+('(-955950122,829608964]'::int4range)))+((('(-774655378,228443728]'::int4range)*('[-1743261992,-652206823)'::int4range)))))))))) PARTITION BY RANGE(('5.106.122.166')) WITH (parallel_workers=62, autovacuum_vacuum_threshold=576918990, autovacuum_vacuum_cost_limit=8334, autovacuum_analyze_scale_factor=1, autovacuum_vacuum_cost_delay=61, autovacuum_enabled=1, fillfactor=95, autovacuum_freeze_table_age=1141774323); -- 3ms;
+CREATE TEMPORARY TABLE t0(c0 REAL , EXCLUDE (c0 name_bloom_ops DESC WITH *) WITH (autovacuum_freeze_table_age=348040153, fillfactor=19, autovacuum_vacuum_threshold=290515875, parallel_workers=80) WHERE ((((((((('(-1875512577,-1617231837)'::int4range)-('(-1275005911,-774655378)'::int4range)))+('(756552025,1159216266]'::int4range)))+((((('(-1031590151,1926181048)'::int4range)*('(-122521899,234641984)'::int4range)))+((('(-256855511,829608964)'::int4range)+('(-1617231837,-690703010]'::int4range)))))))&<((((((('(-1756929014,1008054643]'::int4range)+('[-509597985,1251985417)'::int4range)))-(CAST(TRUE AS int4range))))+((((('[-1281235732,-560749302]'::int4range)-('[-1391598214,2119098674)'::int4range)))*((('[-165139946,1873695278)'::int4range)+('[-232514893,1539351952]'::int4range)))))))))); -- 3ms;
+CREATE TABLE t0(c0 DECIMAL  CHECK (NOT ((((('l' COLLATE "en_US.utf8"))||(((B'1111110011001111110010011110111')#(B'1111111111111111111111111111111110110100000000001111010000101001')))) SIMILAR TO (((B'1111111111111111111111111111111111110101001110000000011110000100')>>(B'1001010001011110101011110001010')))::VARCHAR(128)))) UNIQUE) USING heap WITH (autovacuum_vacuum_cost_limit=4440, autovacuum_vacuum_threshold=1106502220, autovacuum_enabled=0, autovacuum_analyze_scale_factor=0.5, autovacuum_freeze_max_age=316070110, fillfactor=80, autovacuum_analyze_threshold=777557148); -- 12ms;
+CREATE TABLE t0(c0 smallint ) PARTITION BY RANGE((t0.c0)) WITH (autovacuum_analyze_scale_factor=1.0E-5, autovacuum_analyze_threshold=616838482, autovacuum_freeze_table_age=1512268255); -- 1ms;
+CREATE TEMP TABLE IF NOT EXISTS t0(c0 boolean  PRIMARY KEY) USING heap WITH (autovacuum_freeze_table_age=1649817239, parallel_workers=664, autovacuum_enabled=1, fillfactor=79, autovacuum_analyze_threshold=1148877917, autovacuum_freeze_min_age=906152081, autovacuum_vacuum_threshold=1112034986, autovacuum_vacuum_cost_delay=84) ON COMMIT PRESERVE ROWS ; -- 8ms;
+CREATE TEMP TABLE IF NOT EXISTS t1(LIKE t0); -- 2ms;
+CREATE TEMPORARY TABLE IF NOT EXISTS t2(LIKE t0); -- 6ms;
+CREATE UNLOGGED TABLE t3(LIKE t1 EXCLUDING DEFAULTS INCLUDING STORAGE); -- 7ms;
+INSERT INTO t3(c0) VALUES(TRUE) ON CONFLICT (c0) DO NOTHING; -- 2ms;
+INSERT INTO t0(c0) VALUES(((0.2399502178210582)=(0.8773163409869498))); -- 1ms;
+UPDATE t1 SET c0=TRUE WHERE t1.c0; -- 0ms;
+INSERT INTO t0(c0) OVERRIDING SYSTEM VALUE VALUES(TRUE), (FALSE), (FALSE), ((((('[-578223246,1251985417]'::int4range)+('[-2117635044,2120738039)'::int4range)))::VARCHAR) NOT IN (split_part('2ᮇ⨖^', 1251985417))), (NULL); -- 3ms;
+INSERT INTO t2(c0) OVERRIDING SYSTEM VALUE VALUES((((CAST(0.2785358 AS MONEY))::BOOLEAN)AND(upper_inc((('[-1369993020,-949333422]'::int4range)+('(201577278,1149394157]'::int4range)))))); -- 0ms;
+INSERT INTO t3(c0) VALUES(((to_char(CAST(0.5414272 AS MONEY), 'ac,SM') SIMILAR TO ((lower('2ᮇ⨖^'))||(0.7421523962853919)))) IS TRUE), (CAST(-1275005911 AS BOOLEAN)), (TRUE); -- 2ms;
+INSERT INTO t2(c0) VALUES(FALSE); -- 0ms;
+UPDATE t0 SET c0=TRUE WHERE t0.c0; -- 1ms;
+INSERT INTO t2(c0) VALUES(TRUE); -- 2ms;
+SET SESSION geqo_generations=DEFAULT; -- 0ms;
+DROP INDEX IF EXISTS i0; -- 0ms;
+SET track_io_timing=DEFAULT; -- 1ms;
+INSERT INTO t2(c0) VALUES(NOT ((((234641984)*(1111464415))) IN (0.24965326))), (TRUE), (NULL); -- 1ms;
+INSERT INTO t1(c0) VALUES(TRUE); -- 0ms;
+ANALYZE;
