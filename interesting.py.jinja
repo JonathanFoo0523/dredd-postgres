@@ -22,6 +22,9 @@ source = '{{ source }}'
 
 with open('testcase.log', 'rb') as f:
     statements = f.read()
+    # This ensure creduce produced test case alwats end with ';'
+    while statements[-1] != 59:
+        statements = statements[:-1]
 
 env_copy = os.environ.copy()
 env_copy["PGPORT"] = str(port)
