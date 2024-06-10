@@ -25,10 +25,18 @@ cp src/dredd/dredd ../third_party/clang+llvm/bin
 
 
 ```
+# install
+tar -Lo postgresql-16.3.tar.gz https://ftp.postgresql.org/pub/source/v16.3/postgresql-16.3.tar.gz
+tar xf  postgresql-16.3.tar.gz 
+rm postgresql-16.3.tar.gz 
+cd postgresql-16.3
+
 sudo apt install libreadline-dev
 ./configure --without-icu
-make
-make all
+
+sudo apt install bear
+bear -- make
+# make all
 ```
 
 ```
@@ -46,5 +54,12 @@ DREDD_ENABLED_MUTATION=2 make check
 LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/initdb -D /home/ubuntu/postgres_data
 tmp_install/usr/local/pgsql/bin/pg_ctl -D /home/ubuntu/postgres_data -l logfile -o "-F -p 4000" start
 LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/createdb test
+```
+
+## Usage
+```
+python3 dredd_coverage_runner.py
+
+rm **/*.lock
 ```
 
