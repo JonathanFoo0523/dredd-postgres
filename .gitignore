@@ -1,0 +1,4 @@
+*.lock
+
+sample_dredd_output/
+fuzz_runner_output/

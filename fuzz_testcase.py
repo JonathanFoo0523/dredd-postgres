@@ -13,7 +13,7 @@ path_to_dredd = '/home/ubuntu/postgresql-16.3/src/backend/'
 dredd_bin = '/home/ubuntu/dredd/third_party/clang+llvm/bin/dredd'
 dredd_coverage_output_directory = 'sample_dredd_output/tracking'
 dredd_mutation_output_directory = 'sample_dredd_output/mutation'
-sqlancer_path = '/home/ubuntu/temp/sqlancer/target/sqlancer-2.0.0.jar'
+sqlancer_path = '/home/ubuntu/sqlancer/target/sqlancer-2.0.0.jar'
 output_directory = 'sample_fuzz_output'
 
 # Pick a random source
@@ -143,7 +143,7 @@ with tempfile.TemporaryDirectory() as temp_data_dir:
 
         # Fuzz with random seed
         with tempfile.TemporaryDirectory() as sqlancer_data_dir:
-            sqlancer_proc = subprocess.run(['java', '-jar', sqlancer_path, '--random-seed', str(sqlancer_seed), '--max-generated-databases', '1', '--num-threads', '16', '--num-queries', '2000', '--username', 'ubuntu', '--port', str(port), 'postgres'], cwd=sqlancer_data_dir)
+            sqlancer_proc = subprocess.run(['java', '-jar', sqlancer_path, '--random-seed', str(sqlancer_seed), '--max-generated-databases', '1', '--num-threads', '2', '--num-queries', '2000', '--username', 'ubuntu', '--port', str(port), 'postgres'], cwd=sqlancer_data_dir)
             if sqlancer_proc.returncode != 0:
                 print('Sqlancer Fail', random_source)
                 exit()
@@ -223,7 +223,7 @@ for mutant in sorted(covered_mutants):
 
             # Fuzz with random seed
             with tempfile.TemporaryDirectory() as sqlancer_data_dir:
-                sqlancer_proc = subprocess.run(['java', '-jar', sqlancer_path, '--random-seed', str(sqlancer_seed), '--max-generated-databases', '1', '--num-threads', '16', '--num-queries', '2000', '--username', 'ubuntu',  '--port', str(port), 'postgres'], cwd=sqlancer_data_dir, stderr=subprocess.DEVNULL)
+                sqlancer_proc = subprocess.run(['java', '-jar', sqlancer_path, '--random-seed', str(sqlancer_seed), '--max-generated-databases', '1', '--num-threads', '2', '--num-queries', '2000', '--username', 'ubuntu',  '--port', str(port), 'postgres'], cwd=sqlancer_data_dir, stderr=subprocess.DEVNULL)
                 if sqlancer_proc.returncode != 0:
                     print("FUZZ KILL:", random_source, 'with', mutant)
                     with open(csv_path, 'a') as f:
