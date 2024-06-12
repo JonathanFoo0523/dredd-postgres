@@ -52,7 +52,7 @@ DREDD_ENABLED_MUTATION=2 make check
 
 ```
 LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/initdb -D /home/ubuntu/postgres_data
-tmp_install/usr/local/pgsql/bin/pg_ctl -D /home/ubuntu/postgres_data -l logfile -o "-F -p 4000" start
+tmp_install/usr/local/pgsql/bin/pg_ctl -D /home/ubuntu/postgres_data -l logfile start
 LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/createdb test
 ```
 

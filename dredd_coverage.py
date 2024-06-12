@@ -29,7 +29,7 @@ for root, dirs, files in os.walk(path_to_dredd):
         continue
 
     # FAILED
-    if directory in ['parser', 'nodes', 'regex', 'jit/llvm', 'libpq', 'utils/adt', 'utils/mb', 'port/win32', 'port']:
+    if directory in ['parser', 'nodes', 'regex', 'jit/llvm', 'libpq', 'utils/adt', 'port/win32', 'port']:
         continue
 
     directory_lock = FileLock(os.path.join(coverage_output_directory, directory.replace('/', '-') + '.lock'), blocking=False)
@@ -42,7 +42,7 @@ for root, dirs, files in os.walk(path_to_dredd):
                 copy_tree(postgres_src, temp_src_dir)
                 
                 # Apply dredd with mutant-tracking To file
-                dredd_proc = subprocess.run(' '.join([dredd_bin, os.path.join(temp_src_dir, relative_path) + '/*.c', '--mutation-info-file', 'mutant-info.json', '--only-track-mutant-coverage']), stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, cwd=temp_src_dir, shell=True)
+                dredd_proc = subprocess.run(' '.join([dredd_bin, os.path.join(temp_src_dir, relative_path) + '/*.c', '--mutation-info-file', 'mutant-info.json', '--only-track-mutant-coverage', '--extra-arg="-Wno-everything"']), stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, cwd=temp_src_dir, shell=True)
                 if dredd_proc.returncode != 0:
                     print('Dredd Fail:', directory)
                     print(dredd_proc.stderr.decode())

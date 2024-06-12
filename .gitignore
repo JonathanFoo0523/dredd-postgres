@@ -1,5 +1,6 @@
 sample_dredd_output/mutation/
 sample_dredd_output/tracking/
 fuzz_runner_output/
+reduce_runner_output/
 
 *.lock

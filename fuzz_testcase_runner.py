@@ -5,12 +5,12 @@ import os
 
 
 def f(x):
-    with open(os.path.join('fuzz_runner_output', f'{x}.out'), 'w') as fout, open(os.path.join('fuzz_runner_output', f'{x}.error'), 'w') as ferror:
-        proc = subprocess.run(['python3', '-u', 'fuzz_testcase.py'], stdout=fout, stderr=ferror)
+    with open(os.path.join('fuzz_runner_output', f'{x}.out'), 'w') as fout:
+        proc = subprocess.run(['python3', '-u', 'fuzz_testcase.py'], stdout=fout)
 
-with Pool(cpu_count() // 2) as p:
+with Pool(cpu_count()) as p:
     try:
-        p.map(f, range(1000000))
+        p.map(f, range(2000000,3000000))
     except KeyboardInterrupt:
         pass
 

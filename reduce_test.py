@@ -32,6 +32,9 @@ for filepath in glob.glob(f'{fuzz_output_directory}/*/killing_testcases/*.log'):
     _, source, _, logfile = filepath.split('/')
     mutant = logfile.replace('.log', '')
 
+    if source not in ['optimizer-plan']:
+        continue
+
     if os.path.isfile(os.path.join(output_directory, f'{source}-{mutant}.sql')):
         continue
 
@@ -66,7 +69,7 @@ for filepath in glob.glob(f'{fuzz_output_directory}/*/killing_testcases/*.log'):
                 shutil.copy(os.path.join(tempdir, 'testcase.log'), 'temp/testcase.log')
 
                 # Execute 
-                proc = subprocess.run(['creduce', 'interesting.py', 'testcase.log'], cwd=tempdir)
+                proc = subprocess.run(['creduce', 'interesting.py', 'testcase.log', '--not-c', '--n', '16'], cwd=tempdir)
                 if proc.returncode != 0:
                     exit()
 

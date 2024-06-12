@@ -1,0 +1,2 @@
+mutant, status
+0, STDOUT_DIFF_KILL
