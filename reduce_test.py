@@ -32,8 +32,8 @@ for filepath in glob.glob(f'{fuzz_output_directory}/*/killing_testcases/*.log'):
     _, source, _, logfile = filepath.split('/')
     mutant = logfile.replace('.log', '')
 
-    if source not in ['optimizer-plan']:
-        continue
+    # if source not in ['optimizer-plan']:
+    #     continue
 
     if os.path.isfile(os.path.join(output_directory, f'{source}-{mutant}.sql')):
         continue

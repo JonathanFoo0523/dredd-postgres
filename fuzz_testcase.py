@@ -196,7 +196,7 @@ with tempfile.TemporaryDirectory() as temp_data_dir:
         env_copy["DREDD_MUTANT_TRACKING_FILE"] = coverage_filepath
         pg_ctl_proc = subprocess.run([os.path.join(coverage_installation, 'usr', 'local', 'pgsql', 'bin', 'pg_ctl'), '-D', temp_data_dir, '-l', f'{temp_data_dir}/logfile', 'start'], env=env_copy, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if pg_ctl_proc.returncode != 0:
-            print('PG_CTL(Cov) Fail:', source)
+            print('PG_CTL(Cov) Fail:', random_source)
             print(pg_ctl_proc.stderr.decode())
             exit()
         else:
@@ -223,7 +223,7 @@ with tempfile.TemporaryDirectory() as temp_data_dir:
             covered_mutants = set(sorted([int(line.rstrip()) for line in temp_coverage_file]))
             print("Covered Mutants:", len(covered_mutants))
 
-        finally:    
+        finally:
             # Stop postgres server process
             pg_ctl_stop_proc = subprocess.run([os.path.join(coverage_installation, 'usr', 'local', 'pgsql', 'bin', 'pg_ctl'), '-D', temp_data_dir, 'stop'], env=env_copy, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             print(pg_ctl_stop_proc.stdout.decode())

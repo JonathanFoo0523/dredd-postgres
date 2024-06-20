@@ -1,4 +1,6 @@
-
+# Dredd-Testing Postgres
+## Setup
+### Install Dredd
 ```
 
 sudo apt install build-essential libghc-terminfo-dev libzstd-dev zlib1g-dev cmake ninja-build
@@ -23,7 +25,7 @@ cmake --build . --config Release
 cp src/dredd/dredd ../third_party/clang+llvm/bin
 ```
 
-
+### Install Postgres and Bear
 ```
 # install
 tar -Lo postgresql-16.3.tar.gz https://ftp.postgresql.org/pub/source/v16.3/postgresql-16.3.tar.gz
@@ -39,27 +41,12 @@ bear -- make
 # make all
 ```
 
-```
-sudo apt install bear
-bear -- make
-```
-
-```
-# APPLY DREDD HERE
-make
-DREDD_ENABLED_MUTATION=2 make check
-```
-
-```
-LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/initdb -D /home/ubuntu/postgres_data
-tmp_install/usr/local/pgsql/bin/pg_ctl -D /home/ubuntu/postgres_data -l logfile start
-LD_LIBRARY_PATH=/home/ubuntu/postgresql-16.3/tmp_install/usr/local/pgsql/lib ./tmp_install/usr/local/pgsql/bin/createdb test
-```
-
 ## Usage
+Go to relevant python script to change te the input and output path
+
 ```
 python3 dredd_coverage_runner.py
-
-rm **/*.lock
+python3 fuzz_testcase_runner.py
+python3 reduce_test.py
 ```
 
