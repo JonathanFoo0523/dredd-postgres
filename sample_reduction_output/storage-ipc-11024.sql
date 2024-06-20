@@ -1,0 +1,26 @@
+ CREATE UNLOGGED TABLE IF NOT EXISTS t0(c0 money , c1 name COLLATE "C.utf8" ) WITH (parallel_workers=299, autovacuum_vacuum_cost_delay=99, autovacuum_freeze_table_age=1875175578, autovacuum_analyze_threshold=1793536623, fillfactor=62,  autovacuum_freeze_max_age=387892117, autovacuum_vacuum_threshold=1579829297, autovacuum_analyze_scale_factor=0, autovacuum_vacuum_cost_limit=4127, autovacuum_vacuum_scale_factor=1);
+   ms;
+  CREATE TABLE t1(LIKE t0);
+  -- 87
+  CREATE  TABLE t2(LIKE t0);
+  -- 1ms;
+  CREATE UNLOGGED TABLE t3(c0 int4range  DEFAULT ((((('(945139508,1117210952]'::int4range)+('[-296297229,2064304109)'::int4range)))*((((((('(-359270545,2124035186)'::int4range)))*((('[-296297229,2124035186]'::int4range)+('[-1747857064,1520461706)')))))+((((('[-1040020081,2064304109]'::int4range)+('(-2144832270,1437085351]'::int4range)))+(range_merge('(-1710990228,1372981421)'::int4range, '(-1052442438,-359270545)'::int4range)))))))) NULL) USING heap WITH (autovacuum_vacuum_cost_delay=44);
+  CREATE UNLOGGED TABLE IF NOT EXISTS t4(LIKE t2);
+  CREATE TABLE IF NOT EXISTS t5(LIKE t2);
+  -- 0.4107419)::MONEY);
+  -- 1;
+  INSERT INTO t5(c0) VALUES(CAST(0.914044 AS MONEY));
+  -- 0ms;
+  INSERT INTO t5(c0) VALUES((0.4085116)::MONEY), ((2.1240352E9)::MONEY), (CAST(0.7991837 AS MONEY));
+  INSERT INTO t1(c1) VALUES('0S'), ('-1147145690'), (0);
+ INSERT INTO t5, c0) VALUES('6ವḅj', (0.045348816)::MONEY);
+  INSERT INTO t4(c1, c0) VALUES(DEFAULT, NULL);
+  INSERT INTO t3(c0) VALUES('[-13031826,756043340)'::int4range), ('[-505325451,-190329655)'::int4range), ('[-395456925,1310634997]'::int4range);
+  INSERT INTO t4(c0) VALUES((0.7641725)::MONEY);
+  INSERT INTO t0(c0, c1) VALUES((0.9370798)::MONEY, '''*y3sG|qw');
+  INSERT INTO t4(c1, c0) 'd,\', (0.3889766)::MONEY); -- 0ms;
+INSERT INTO t0(c0) VALUES((0.2881723)::MONEY), (CAST(0.040050864 AS MONEY)), ((0.80100954)::MONEY); -- 3ms;
+ANALYZE; -- 1184ms;
+INSERT INTO t1(c0, c1) VALUES(CAST(0.9121299 AS MONEY) (btrim((('')||(1333968389)), CAST(TRUE AS VARCHAR(687))) COLLATE "C")) ON CONFLICT  DO NOTHING; -- 12ms;
+SET SESSION statement_timeout = 5000;\n; -- 1ms;
+ SELECT ALL t1.c1, t1.c0, t4.c1 FROM ONLY t1, t3, t4* CROSS JOIN t0* CROSS JOIN ONLY t5 CROSS JOIN (SELECT ALL 0.17695339 FROM t1*, t0, ONLY t5, t3*, ONLY t4 WHERE (((t0.c1)||(0.06063265926807737))) BETWEEN ((t1.c1 COLLATE "en_US.utf8")) AND (t1.c1) LIMIT 6426719629320615168) AS sub0;

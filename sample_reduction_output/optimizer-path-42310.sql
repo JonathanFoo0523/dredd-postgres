@@ -1,0 +1,5 @@
+CREATE TABLE a(b TEXT, c FLOAT);
+CREATE TABLE d(LIKE a);
+CREATE TABLE e(LIKE d);
+CREATE INDEX ON e(c, (0));
+UPDATE e SET b = '/>ۼsjGmaꎑ' WHERE(b) LIKE(b);
